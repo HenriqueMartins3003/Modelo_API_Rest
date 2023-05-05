@@ -1,6 +1,11 @@
-// eslint-disable-next-line no-unused-vars, import/no-extraneous-dependencies
+/* eslint-disable import/first */
+/* eslint-disable import/no-extraneous-dependencies */
+import dotEnv from 'dotenv';
+
+dotEnv.config();
+import './src/database';
 import express from 'express';
-import homeRoutes from './src/Routes/homeRoutes';
+import homeRoutes from './src/routes/homeRoutes';
 
 class App {
   constructor() {
