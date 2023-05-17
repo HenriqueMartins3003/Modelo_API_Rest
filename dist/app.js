@@ -15,20 +15,6 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _pictureRoutes = require('./routes/pictureRoutes'); var _pictureRoutes2 = _interopRequireDefault(_pictureRoutes);
 
-const whiteList = [
-  'http://localhost:3000',
-  'http://192.168.0.1',
-];
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not Allowed by CORS'));
-    }
-  },
-};
 class App {
   constructor() {
     this.app = _express2.default.call(void 0, );
@@ -37,11 +23,11 @@ class App {
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, corsOptions));
+    this.app.use(_cors2.default.call(void 0, ));
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
-    this.app.use(_express2.default.static('/images/', _path.resolve.call(void 0, __dirname, '..', 'uploads', 'images')));
+    this.app.use(_express2.default.static(_path.resolve.call(void 0, __dirname, '..', 'uploads', 'images')));
   }
 
   routes() {
